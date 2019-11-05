@@ -28,7 +28,7 @@ node {
         tryStep "test", {
             docker.withRegistry("${DOCKER_REGISTRY}",'docker-registry') {
                 docker.build("mijnams/${PROJ_NAME}:${env.BUILD_NUMBER}")
-                sh "docker run --rm mijnams/mijn-:${env.BUILD_NUMBER} /app/test.sh"
+                sh "docker run --rm mijnams/${PROJ_NAME}:${env.BUILD_NUMBER} /app/test.sh"
             }
         }
     }
