@@ -28,15 +28,18 @@ def get_bsn_from_request(request):
     return bsn
 
 
-@app.route('/milieu/getvergunningen', methods=['GET'])
+@app.route('/milieu/get', methods=['GET'])
 def get_milieu_zone():
     # connection =
-    try:
-        bsn = get_bsn_from_request(request)
-    except Exception as e:
-        return str(e), 400
+    # try:
+    #     bsn = get_bsn_from_request(request)
+    # except Exception as e:
+    #     return str(e), 400
 
-    # return
+    return {
+        'status': 'OK',
+        'data': {}
+    }
 
 
 @app.route('/status/health')
