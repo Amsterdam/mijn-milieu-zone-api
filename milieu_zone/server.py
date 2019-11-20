@@ -1,6 +1,6 @@
 
 import sentry_sdk
-from flask import Flask, request
+from flask import Flask  # , request
 from sentry_sdk.integrations.flask import FlaskIntegration
 from tma_saml import get_digi_d_bsn
 
@@ -35,7 +35,7 @@ def get_milieu_zone():
     #     bsn = get_bsn_from_request(request)
     # except Exception as e:
     #     return str(e), 400
-
+    #
     return {
         'status': 'OK',
         'data': {}

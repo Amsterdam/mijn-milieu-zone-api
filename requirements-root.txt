@@ -1,3 +1,5 @@
+--extra-index-url https://nexus.secure.amsterdam.nl/repository/pypi-hosted/simple
+
 # flask and plugins
 flask
 Flask-Testing
