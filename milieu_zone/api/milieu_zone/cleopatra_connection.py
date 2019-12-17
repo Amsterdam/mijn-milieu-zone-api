@@ -33,5 +33,6 @@ class CleopatraConnection:
 
     def get_stuff(self, bsn):
         # res = requests.post(self.cleopatra_host, verify=get_cleopatra_cert(), data={})
-        res = requests.post(self.cleopatra_host, verify=False, data={})
+        jwe_token = self._get_jwe_token(bsn)
+        res = requests.post(self.cleopatra_host, verify=False, data=jwe_token)
         return res
