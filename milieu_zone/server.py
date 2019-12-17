@@ -1,10 +1,11 @@
 
 import sentry_sdk
-from flask import Flask  # , request
+from flask import Flask, request
 from sentry_sdk.integrations.flask import FlaskIntegration
 from tma_saml import get_digi_d_bsn
 
-from milieu_zone.config import get_sentry_dsn, get_tma_certificate
+from milieu_zone.api.milieu_zone.cleopatra_connection import CleopatraConnection
+from milieu_zone.config import get_sentry_dsn, get_tma_certificate, get_cleopatra_host, get_mijn_ams_cert
 
 app = Flask(__name__)
 
@@ -30,15 +31,17 @@ def get_bsn_from_request(request):
 
 @app.route('/milieu/get', methods=['GET'])
 def get_milieu_zone():
-    # connection =
-    # try:
-    #     bsn = get_bsn_from_request(request)
-    # except Exception as e:
-    #     return str(e), 400
-    #
+    connection = CleopatraConnection(get_cleopatra_host(), get_mijn_ams_cert())
+    try:
+        bsn = get_bsn_from_request(request)
+    except Exception as e:
+        return str(e), 400
+
+    data = connection.get_stuff(bsn)
+
     return {
         'status': 'OK',
-        'data': {}
+        'data': data,
     }
 
 

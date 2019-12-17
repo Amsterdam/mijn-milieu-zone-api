@@ -22,8 +22,7 @@ A REST API which discloses the Amsterdam Milieu Zone data
 ### Deployment
 
 1. Make sure the env vars described in 'Local development' are set
-3. Run `docker-compose up --build`
-4. Get '/status/health' to check if the API is up and running
+2. Get '/status/health' to check if the API is up and running
 
 ### Testing
 
