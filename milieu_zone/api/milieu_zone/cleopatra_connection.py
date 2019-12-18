@@ -6,16 +6,17 @@ from jwcrypto import jwe, jwk
 
 class CleopatraConnection:
 
-    def __init__(self, cleopatra_host, client_public_cert):
+    def __init__(self, cleopatra_host, client_public_cert, cleopatra_pub):
         self.cleopatra_host = cleopatra_host
         self.client_public = client_public_cert
+        self.cleopatra_pub = cleopatra_pub
 
     def _get_jwe_token(self, bsn):
         """ Return the encoded JWE token containing the BSN. """
         # Inspired by https://jwcrypto.readthedocs.io/en/latest/jwe.html#asymmetric-keys
         payload = json.dumps({'bsn': bsn})
 
-        public_key = jwk.JWK.from_pem(self.client_public)
+        public_key = jwk.JWK.from_pem(self.cleopatra_pub)
         protected_header = {
             "alg": "RSA-OAEP-256",
             "enc": "A256CBC-HS512",

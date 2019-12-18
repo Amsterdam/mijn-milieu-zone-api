@@ -11,11 +11,17 @@ def get_tma_certificate():
         return f.read()
 
 
+def get_mijn_ams_cert():
+    cert_location = os.getenv("MIJN_DATA_CLIENT_CERT")
+    with open(cert_location) as f:
+        return f.read()
+
+
 def get_cleopatra_host():
     return os.getenv('CLEOPATRA_HOST')
 
 
-def get_mijn_ams_cert():
-    cert_location = os.getenv("MIJN_AMS_CERT")
+def get_cleopatra_pub():
+    cert_location = os.getenv("CLEOPATRA_PUB")
     with open(cert_location) as f:
         return f.read()

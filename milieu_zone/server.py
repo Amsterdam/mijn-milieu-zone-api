@@ -5,7 +5,8 @@ from sentry_sdk.integrations.flask import FlaskIntegration
 from tma_saml import get_digi_d_bsn
 
 from milieu_zone.api.milieu_zone.cleopatra_connection import CleopatraConnection
-from milieu_zone.config import get_sentry_dsn, get_tma_certificate, get_cleopatra_host, get_mijn_ams_cert
+from milieu_zone.config import get_sentry_dsn, get_tma_certificate, get_cleopatra_host, get_mijn_ams_cert, \
+    get_cleopatra_pub
 
 app = Flask(__name__)
 
@@ -31,7 +32,7 @@ def get_bsn_from_request(request):
 
 @app.route('/milieu/get', methods=['GET'])
 def get_milieu_zone():
-    connection = CleopatraConnection(get_cleopatra_host(), get_mijn_ams_cert())
+    connection = CleopatraConnection(get_cleopatra_host(), get_mijn_ams_cert(), get_cleopatra_pub())
     try:
         bsn = get_bsn_from_request(request)
     except Exception as e:
