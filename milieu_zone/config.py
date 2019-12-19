@@ -27,6 +27,10 @@ def get_cleopatra_host():
     return os.getenv('CLEOPATRA_HOST')
 
 
-def get_cleopatra_pub():
+def get_cleopatra_pub_path():
     cert = os.getenv("CLEOPATRA_PUB")
     return cert
+
+
+def get_cleopatra_pub():
+    return _load_file_from_env(get_mijn_ams_key_path())

@@ -27,7 +27,8 @@ class CleopatraConnectionTest(TestCase):
             "http://localhost/",
             self.public_key.export_to_pem(),
             self.private_key.export_to_pem(),
-            self.cleo_pub.export_to_pem()
+            self.cleo_pub.export_to_pem(),
+            'pub_path_mocked_away'
         )
         result = con.get_stuff("111222333")
         self.assertTrue(result)
