@@ -23,6 +23,11 @@ class CleopatraConnectionTest(TestCase):
         self.cleo_pub.import_key(**json_decode(cleo_priv.export_public()))
 
     def test_get(self):
-        con = CleopatraConnection("http://localhost/", self.public_key.export_to_pem(), self.cleo_pub.export_to_pem())
+        con = CleopatraConnection(
+            "http://localhost/",
+            self.public_key.export_to_pem(),
+            self.private_key.export_to_pem(),
+            self.cleo_pub.export_to_pem()
+        )
         result = con.get_stuff("111222333")
         self.assertTrue(result)
