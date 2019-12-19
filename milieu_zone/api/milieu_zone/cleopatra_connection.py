@@ -6,10 +6,10 @@ from jwcrypto import jwe, jwk
 
 class CleopatraConnection:
 
-    def __init__(self, cleopatra_host, client_public_cert, client_priv_cert, cleopatra_pub):
+    def __init__(self, cleopatra_host, client_public_cert_path, client_priv_cert_path, cleopatra_pub):
         self.cleopatra_host = cleopatra_host
-        self.client_public = client_public_cert
-        self.client_priv = client_priv_cert
+        self.client_public_path = client_public_cert_path
+        self.client_priv_path = client_priv_cert_path
         self.cleopatra_pub = cleopatra_pub
 
     def _get_jwe_token(self, bsn):
@@ -40,6 +40,6 @@ class CleopatraConnection:
             self.cleopatra_host,
             # verify=False,
             data=jwe_token,
-            cert=(self.client_public, self.client_priv)
+            cert=(self.client_public_path, self.client_priv_path)
         )
         return res
