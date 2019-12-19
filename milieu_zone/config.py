@@ -22,6 +22,5 @@ def get_cleopatra_host():
 
 
 def get_cleopatra_pub():
-    cert_location = os.getenv("CLEOPATRA_PUB")
-    with open(cert_location) as f:
-        return f.read()
+    cert = os.getenv("CLEOPATRA_PUB")
+    return cert
