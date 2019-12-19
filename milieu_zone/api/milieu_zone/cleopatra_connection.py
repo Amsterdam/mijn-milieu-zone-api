@@ -3,6 +3,8 @@ import json
 
 from jwcrypto import jwe, jwk
 
+from milieu_zone.config import get_mijn_ams_cert, get_mijn_ams_key
+
 
 class CleopatraConnection:
 
@@ -35,5 +37,10 @@ class CleopatraConnection:
     def get_stuff(self, bsn):
         # res = requests.post(self.cleopatra_host, verify=get_cleopatra_cert(), data={})
         jwe_token = self._get_jwe_token(bsn)
-        res = requests.post(self.cleopatra_host, verify=False, data=jwe_token)
+        res = requests.post(
+            self.cleopatra_host,
+            verify=False,
+            data=jwe_token,
+            cert=(get_mijn_ams_cert(), get_mijn_ams_key())
+        )
         return res
