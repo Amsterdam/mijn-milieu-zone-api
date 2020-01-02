@@ -33,4 +33,4 @@ def get_cleopatra_pub_path():
 
 
 def get_cleopatra_pub():
-    return _load_file_from_env(get_mijn_ams_key_path())
+    return _load_file_from_env('CLEOPATRA_PUB')
