@@ -39,7 +39,8 @@ class CleopatraConnection:
         jwe_token = self._get_jwe_token(bsn)
         res = requests.post(
             self.cleopatra_host,
-            verify=self.cleopatra_pub_path,
+            # verify=self.cleopatra_pub_path,  # TODO: needs to be added to the "global store" instead of being specific
+            verify=False,
             data=jwe_token,
             cert=(self.client_public_path, self.client_priv_path)
         )
