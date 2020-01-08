@@ -31,4 +31,4 @@ class CleopatraConnectionTest(TestCase):
             'pub_path_mocked_away'
         )
         result = con.get_stuff("111222333")
-        self.assertTrue(result)
+        self.assertEqual(result, {})
