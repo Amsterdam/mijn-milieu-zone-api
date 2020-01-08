@@ -1,0 +1,28 @@
+
+Two certificates are needed for the tests.
+
+One key/cert for our side and one public for cleopatra
+
+First our key pair:
+
+    $ cd milieu_zone/tests/fixtures
+
+    $ openssl genrsa -out mijn_ams.pem 2048
+
+    # All with the defaults:
+    $ openssl req -new -key mijn_ams.pem -out mijn_ams.csr
+
+    $ openssl x509 -req -days 1185 -in mijn_ams.csr -signkey mijn_ams.pem -out mijn_ams.crt
+
+    $ rm mijn_ams.csr
+
+
+Second:
+    $ openssl genrsa -out cleopatra.pem 2048
+    $ openssl req -new -key cleopatra.pem -out cleopatra.csr
+
+    # all with defaults:
+    $ openssl x509 -req -days 1185 -in cleopatra.csr -signkey cleopatra.pem -out cleopatra.crt
+
+    $ rm cleopatra.csr cleopatra.key
+

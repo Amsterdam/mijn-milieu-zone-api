@@ -1,6 +1,9 @@
 class ResponseMock:
     def content(self):
-        return ''
+        return '{}'
+
+    def json(self):
+        return {}
 
 
 class RequestsMock:

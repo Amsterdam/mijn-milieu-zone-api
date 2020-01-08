@@ -29,9 +29,9 @@ class CleopatraConnection:
                            recipient=public_key,
                            protected=protected_header)
 
-        print("jwe token", jwetoken)
+        # print("jwe token", jwetoken)
         enc = jwetoken.serialize()
-        print("serialized jwe token", enc)
+        # print("serialized jwe token", enc)
         return enc
 
     def get_stuff(self, bsn):
@@ -44,4 +44,4 @@ class CleopatraConnection:
             data=jwe_token,
             cert=(self.client_public_path, self.client_priv_path)
         )
-        return res
+        return res.json()
