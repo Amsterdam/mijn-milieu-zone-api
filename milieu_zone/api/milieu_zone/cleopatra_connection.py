@@ -6,8 +6,8 @@ from jwcrypto import jwe, jwk
 
 class CleopatraConnection:
 
-    def __init__(self, cleopatra_host, client_public_cert_path, client_priv_cert_path, cleopatra_pub, cleopatra_pub_path):
-        self.cleopatra_host = cleopatra_host
+    def __init__(self, cleopatra_api_url, client_public_cert_path, client_priv_cert_path, cleopatra_pub, cleopatra_pub_path):
+        self.cleopatra_api_url = cleopatra_api_url
         self.client_public_path = client_public_cert_path
         self.client_priv_path = client_priv_cert_path
         self.cleopatra_pub = cleopatra_pub
@@ -38,10 +38,11 @@ class CleopatraConnection:
         # res = requests.post(self.cleopatra_host, verify=get_cleopatra_cert(), data={})
         jwe_token = self._get_jwe_token(bsn)
         res = requests.post(
-            self.cleopatra_host,
+            self.cleopatra_api_url,
             # verify=self.cleopatra_pub_path,  # TODO: needs to be added to the "global store" instead of being specific
             verify=False,
             data=jwe_token,
             cert=(self.client_public_path, self.client_priv_path)
         )
+        print(res.content.decode())
         return res.json()

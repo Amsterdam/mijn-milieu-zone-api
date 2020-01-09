@@ -23,8 +23,8 @@ def get_mijn_ams_key_path():
     return os.getenv("MIJN_DATA_CLIENT_KEY")
 
 
-def get_cleopatra_host():
-    return os.getenv('CLEOPATRA_HOST')
+def get_cleopatra_url():
+    return os.getenv('CLEOPATRA_URL')
 
 
 def get_cleopatra_pub_path():
