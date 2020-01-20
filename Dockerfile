@@ -15,6 +15,7 @@ WORKDIR /app
 COPY test.sh /app/
 COPY .flake8 /app/
 COPY requirements.txt /app/
+COPY uwsgi.ini /app/
 
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
@@ -22,4 +23,4 @@ RUN pip install --no-cache-dir -r /app/requirements.txt
 COPY milieu_zone /app/milieu_zone
 
 USER datapunt
-CMD uwsgi
+CMD uwsgi --ini /app/uwsgi.ini
