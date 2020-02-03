@@ -1,3 +1,4 @@
+import os
 from unittest import TestCase
 from unittest.mock import patch
 
@@ -7,6 +8,10 @@ from jwcrypto.common import json_decode
 from milieu_zone.api.milieu_zone.cleopatra_connection import CleopatraConnection
 from milieu_zone.tests.mocks import RequestsMock
 
+FIXTURE_PATH = os.path.join(os.path.dirname(__file__), 'fixtures')
+FIXTURE_MIJN_AMS_CERT_PATH = os.path.join(FIXTURE_PATH, 'mijn_ams.crt')
+FIXTURE_MIJN_AMS_KEY_PATH = os.path.join(FIXTURE_PATH, 'mijn_ams.pem')
+FIXTURE_CLEOPATRA_CERT_PATH = os.path.join(FIXTURE_PATH, 'cleopatra.crt')
 
 @patch('milieu_zone.api.milieu_zone.cleopatra_connection.requests', RequestsMock)
 class CleopatraConnectionTest(TestCase):
@@ -25,10 +30,9 @@ class CleopatraConnectionTest(TestCase):
     def test_get(self):
         con = CleopatraConnection(
             "http://localhost/",
-            self.public_key.export_to_pem(),
-            self.private_key.export_to_pem(),
-            self.cleo_pub.export_to_pem(),
-            'pub_path_mocked_away'
+            FIXTURE_MIJN_AMS_CERT_PATH,
+            FIXTURE_MIJN_AMS_KEY_PATH,
+            FIXTURE_CLEOPATRA_CERT_PATH,
         )
         result = con.get_stuff("111222333")
         self.assertEqual(result, {})

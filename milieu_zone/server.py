@@ -36,7 +36,6 @@ def get_milieu_zone():
         get_cleopatra_url(),
         get_mijn_ams_cert_path(),
         get_mijn_ams_key_path(),
-        get_cleopatra_pub().encode(),
         get_cleopatra_pub_path()
     )
     try:

@@ -8,5 +8,5 @@ class ResponseMock:
 
 class RequestsMock:
     def post(self, *args, **kwargs):
-        print("post", args, kwargs)
+        print("\n\n>>> ---------- POST\n", args, kwargs)
         return ResponseMock()

@@ -6,12 +6,15 @@ from jwcrypto import jwe, jwk
 
 class CleopatraConnection:
 
-    def __init__(self, cleopatra_api_url, client_public_cert_path, client_priv_cert_path, cleopatra_pub, cleopatra_pub_path):
+    def __init__(self, cleopatra_api_url, client_public_cert_path, client_priv_cert_path, cleopatra_pub_path):
         self.cleopatra_api_url = cleopatra_api_url
         self.client_public_path = client_public_cert_path
         self.client_priv_path = client_priv_cert_path
-        self.cleopatra_pub = cleopatra_pub
+
         self.cleopatra_pub_path = cleopatra_pub_path
+
+        with open(self.cleopatra_pub_path, 'rb') as fp:
+            self.cleopatra_pub = fp.read()
 
     def _get_jwe_token(self, bsn):
         """ Return the encoded JWE token containing the BSN. """
@@ -29,13 +32,10 @@ class CleopatraConnection:
                            recipient=public_key,
                            protected=protected_header)
 
-        # print("jwe token", jwetoken)
         enc = jwetoken.serialize()
-        # print("serialized jwe token", enc)
         return enc
 
     def get_stuff(self, bsn):
-        # res = requests.post(self.cleopatra_host, verify=get_cleopatra_cert(), data={})
         jwe_token = self._get_jwe_token(bsn)
         res = requests.post(
             self.cleopatra_api_url,
@@ -44,5 +44,5 @@ class CleopatraConnection:
             data=jwe_token,
             cert=(self.client_public_path, self.client_priv_path)
         )
-        print(res.content.decode())
+        # print(res.content)
         return res.json()
