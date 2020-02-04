@@ -26,7 +26,6 @@ with open(FIXTURE_CLEOPATRA_CERT_PATH) as f:
 @patch("milieu_zone.server.get_mijn_ams_cert_path", lambda: FIXTURE_MIJN_AMS_CERT_PATH)
 @patch("milieu_zone.server.get_mijn_ams_key_path", lambda: FIXTURE_MIJN_AMS_KEY_PATH)
 @patch("milieu_zone.server.get_cleopatra_pub_path", lambda: FIXTURE_CLEOPATRA_CERT_PATH)
-@patch("milieu_zone.server.get_cleopatra_pub", lambda: FIXTURE_CLEOPATRA_CERT)
 @patch('milieu_zone.api.milieu_zone.cleopatra_connection.requests', RequestsMock)
 class ApiTest(FlaskServerTMATestCase):
     TEST_BSN = "111222333"
