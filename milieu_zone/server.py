@@ -6,7 +6,7 @@ from tma_saml import get_digi_d_bsn
 
 from milieu_zone.api.milieu_zone.cleopatra_connection import CleopatraConnection
 from milieu_zone.config import get_sentry_dsn, get_tma_certificate, get_cleopatra_url, get_mijn_ams_cert_path, \
-    get_cleopatra_pub, get_mijn_ams_key_path, get_cleopatra_pub_path
+    get_mijn_ams_key_path, get_cleopatra_pub_path
 
 app = Flask(__name__)
 

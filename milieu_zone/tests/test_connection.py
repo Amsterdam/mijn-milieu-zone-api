@@ -13,6 +13,7 @@ FIXTURE_MIJN_AMS_CERT_PATH = os.path.join(FIXTURE_PATH, 'mijn_ams.crt')
 FIXTURE_MIJN_AMS_KEY_PATH = os.path.join(FIXTURE_PATH, 'mijn_ams.pem')
 FIXTURE_CLEOPATRA_CERT_PATH = os.path.join(FIXTURE_PATH, 'cleopatra.crt')
 
+
 @patch('milieu_zone.api.milieu_zone.cleopatra_connection.requests', RequestsMock)
 class CleopatraConnectionTest(TestCase):
     def setUp(self) -> None:
