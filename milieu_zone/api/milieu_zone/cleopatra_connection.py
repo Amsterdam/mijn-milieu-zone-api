@@ -16,10 +16,10 @@ class CleopatraConnection:
         with open(self.cleopatra_pub_path, 'rb') as fp:
             self.cleopatra_pub = fp.read()
 
-    def _get_jwe_token(self, bsn):
+    def _get_jwe_token(self, request_id_obj):
         """ Return the encoded JWE token containing the BSN. """
         # Inspired by https://jwcrypto.readthedocs.io/en/latest/jwe.html#asymmetric-keys
-        payload = json.dumps({'bsn': bsn})
+        payload = json.dumps(request_id_obj)
 
         public_key = jwk.JWK.from_pem(self.cleopatra_pub)
         protected_header = {
@@ -35,14 +35,58 @@ class CleopatraConnection:
         enc = jwetoken.serialize()
         return enc
 
-    def get_stuff(self, bsn):
-        jwe_token = self._get_jwe_token(bsn)
-        res = requests.post(
+    def get_data(self, request_id_obj):
+        jwe_token = self._get_jwe_token(request_id_obj)
+        response = requests.post(
             self.cleopatra_api_url,
             # verify=self.cleopatra_pub_path,  # TODO: needs to be added to the "global store" instead of being specific
             verify=False,
             data=jwe_token,
             cert=(self.client_public_path, self.client_priv_path)
         )
-        # print(res.content)
-        return res.json()
+        return response.json()
+
+    def _format_data(self, data_item):
+        i = data_item
+        return {
+            "id": 'milieu-' + i["categorie"],  # FIXME: these are not unique enough
+            "priority": i["prioriteit"],
+            "datePublished": i["datum"],
+            "title": i["titel"],
+            "description": i["omschrijving"],
+            "url": {
+                "title": i["urlNaam"],
+                "url": i["url"],
+            }
+        }
+
+    def transform(self, data):
+        res = {
+            "tips": [],
+            "meldingen": [],
+            "isKnown": False
+        }
+
+        for i in data:
+            if i['categorie'] == "F2":
+                res['isKnown'] = True
+
+            elif i['categorie'] == 'F3':
+                melding = self._format_data(i)
+                res['meldingen'].append(melding)
+
+            elif i['categorie'] == 'M1':
+                melding = self._format_data(i)
+                res['meldingen'].append(melding)
+
+            # M2 comes from the tips-api. content tip
+            # elif i['categorie'] == 'M2':
+            #     tip = self._format_data(i)
+            #     res['tips'].append(tip)
+
+        return res
+
+    def get_stuff(self, request_id_obj):
+        data = self.get_data(request_id_obj)
+        data = self.transform(data)
+        return data

@@ -6,6 +6,7 @@ from jwcrypto import jwk
 from jwcrypto.common import json_decode
 
 from milieu_zone.api.milieu_zone.cleopatra_connection import CleopatraConnection
+from milieu_zone.tests.fixtures.all_expected import get_all_expected
 from milieu_zone.tests.mocks import RequestsMock
 
 FIXTURE_PATH = os.path.join(os.path.dirname(__file__), 'fixtures')
@@ -28,6 +29,9 @@ class CleopatraConnectionTest(TestCase):
         cleo_priv = jwk.JWK.generate(kty='RSA', size=2048)
         self.cleo_pub.import_key(**json_decode(cleo_priv.export_public()))
 
+    def get_expected(self):
+        return get_all_expected()
+
     def test_get(self):
         con = CleopatraConnection(
             "http://localhost/",
@@ -36,4 +40,4 @@ class CleopatraConnectionTest(TestCase):
             FIXTURE_CLEOPATRA_CERT_PATH,
         )
         result = con.get_stuff("111222333")
-        self.assertEqual(result, {})
+        self.assertEqual(result, self.get_expected())
