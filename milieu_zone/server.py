@@ -84,7 +84,7 @@ def get_milieu_zone():
 
     return {
         'status': 'OK',
-        'data': data,
+        'content': data,
     }
 
 
