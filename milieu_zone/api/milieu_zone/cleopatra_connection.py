@@ -54,9 +54,9 @@ class CleopatraConnection:
             "datePublished": i["datum"],
             "title": i["titel"],
             "description": i["omschrijving"],
-            "url": {
+            "link": {
                 "title": i["urlNaam"],
-                "url": i["url"],
+                "to": i["url"],
             }
         }
 

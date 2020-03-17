@@ -8,9 +8,9 @@ def get_all_expected():
                 'id': 'milieu-F3',
                 'priority': 0,
                 'title': 'Uw aanvraag ontheffing milieuzone Brom/Snor',
-                'url': {
+                'link': {
                     'title': 'Meer informatie',
-                    'url': 'https://ontheffingen-acc.amsterdam.nl/publiek/aanvraag/5A158FD9-B07D-4A4C-B780-8359A9A14906'
+                    'to': 'https://ontheffingen-acc.amsterdam.nl/publiek/aanvraag/5A158FD9-B07D-4A4C-B780-8359A9A14906'
                 }
             },
             {
@@ -19,9 +19,9 @@ def get_all_expected():
                 'id': 'milieu-M1',
                 'priority': 0,
                 'title': 'Uw aanvraag ontheffing milieuzone Brom/Snor',
-                'url': {
+                'link': {
                     'title': 'Betaal direct',
-                    'url': 'https://ontheffingen-acc.amsterdam.nl/publiek/aanvraag/88D12139-6BFF-45BF-9FA5-4BFCC01F284F'
+                    'to': 'https://ontheffingen-acc.amsterdam.nl/publiek/aanvraag/88D12139-6BFF-45BF-9FA5-4BFCC01F284F'
                 }
             },
             {
@@ -30,9 +30,9 @@ def get_all_expected():
                 'id': 'milieu-M1',
                 'priority': 0,
                 'title': 'milieuzone.m1.overtreding.gebied.niet_bekeken.titel',
-                'url': {
+                'link': {
                     'title': 'milieuzone.m1.overtreding.gebied.niet_bekeken.button',
-                    'url': 'https://ontheffingen-acc.amsterdam.nl/publiek/overtreding/46B958B6-9F46-4784-A453-716320950454'
+                    'to': 'https://ontheffingen-acc.amsterdam.nl/publiek/overtreding/46B958B6-9F46-4784-A453-716320950454'
                 }
             },
             {
@@ -42,9 +42,9 @@ def get_all_expected():
                 'id': 'milieu-F3',
                 'priority': 0,
                 'title': 'Uw aanvraag ontheffing milieuzone Brom/Snor',
-                'url': {
+                'link': {
                     'title': 'Meer informatie',
-                    'url': 'https://ontheffingen-acc.amsterdam.nl/publiek/aanvraag/3A36D276-244D-4B12-8A43-97573502728E'
+                    'to': 'https://ontheffingen-acc.amsterdam.nl/publiek/aanvraag/3A36D276-244D-4B12-8A43-97573502728E'
                 }
             },
             {
@@ -53,9 +53,9 @@ def get_all_expected():
                 'id': 'milieu-F3',
                 'priority': 0,
                 'title': 'Uw aanvraag ontheffing milieuzone Brom/Snor',
-                'url': {
+                'link': {
                     'title': 'Meer informatie',
-                    'url': 'https://ontheffingen-acc.amsterdam.nl/publiek/aanvraag/2A3B4C05-700C-4C1E-A399-4E171F5B5420'
+                    'to': 'https://ontheffingen-acc.amsterdam.nl/publiek/aanvraag/2A3B4C05-700C-4C1E-A399-4E171F5B5420'
                 }
             },
             {
@@ -65,9 +65,9 @@ def get_all_expected():
                 'id': 'milieu-F3',
                 'priority': 0,
                 'title': 'Uw aanvraag ontheffing milieuzone Brom/Snor',
-                'url': {
+                'link': {
                     'title': 'Meer informatie',
-                    'url': 'https://ontheffingen-acc.amsterdam.nl/publiek/aanvraag/7B46A24E-BC21-44F9-ADB8-B85A75FAFB90'
+                    'to': 'https://ontheffingen-acc.amsterdam.nl/publiek/aanvraag/7B46A24E-BC21-44F9-ADB8-B85A75FAFB90'
                 }
             },
             {
@@ -76,9 +76,9 @@ def get_all_expected():
                 'id': 'milieu-M1',
                 'priority': 0,
                 'title': 'Uw aanvraag ontheffing milieuzone Brom/Snor',
-                'url': {
+                'link': {
                     'title': 'Betaal direct',
-                    'url': 'https://ontheffingen-acc.amsterdam.nl/publiek/aanvraag/56B31535-1404-4AC0-8658-CD77C32C12EE'
+                    'to': 'https://ontheffingen-acc.amsterdam.nl/publiek/aanvraag/56B31535-1404-4AC0-8658-CD77C32C12EE'
                 }
             }
         ],
