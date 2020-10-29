@@ -19,3 +19,4 @@ sentry-sdk[flask]
 
 # --extra-index-url https://nexus.secure.amsterdam.nl/repository/pypi-hosted/simple
 tma-saml>=0.4.1
+cryptography>=3.2.1
