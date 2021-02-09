@@ -42,7 +42,8 @@ class CleopatraConnection:
             # verify=self.cleopatra_pub_path,  # TODO: needs to be added to the "global store" instead of being specific
             verify=False,
             data=jwe_token,
-            cert=(self.client_public_path, self.client_priv_path)
+            cert=(self.client_public_path, self.client_priv_path),
+            timeout=9
         )
         return response.json()
 
