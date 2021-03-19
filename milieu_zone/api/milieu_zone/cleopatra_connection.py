@@ -4,6 +4,9 @@ import json
 from jwcrypto import jwe, jwk
 
 
+log_raw = False
+
+
 class CleopatraConnection:
 
     def __init__(self, cleopatra_api_url, client_public_cert_path, client_priv_cert_path, cleopatra_pub_path):
@@ -37,14 +40,18 @@ class CleopatraConnection:
 
     def get_data(self, request_id_obj):
         jwe_token = self._get_jwe_token(request_id_obj)
+        url = self.cleopatra_api_url
         response = requests.post(
-            self.cleopatra_api_url,
+            url,
             # verify=self.cleopatra_pub_path,  # TODO: needs to be added to the "global store" instead of being specific
             verify=False,
             data=jwe_token,
             cert=(self.client_public_path, self.client_priv_path),
             timeout=9
         )
+        if log_raw:
+            print("\nstatus", response.status_code, url)
+            print(">>", response.content)
         return response.json()
 
     def _format_data(self, data_item):
