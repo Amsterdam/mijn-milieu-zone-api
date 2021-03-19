@@ -1,0 +1,60 @@
+openapi: 3.0.3
+info:
+  title: Milieu zone koppel api
+  description: Milieu zone koppel api
+  version: 1.0.0
+servers:
+  - url: 'https://mijn.amsterdam.nl'
+paths:
+  /milieu/get:
+    description: main endpoint to get data for data in Cleopatra
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  isKnown:
+                    type: string
+                  meldingen:
+                    $ref: '#/components/schemas/meldingen'
+
+components:
+  schemas:
+    meldingen:
+      type: array
+      items:
+        $ref: '#/components/schemas/melding'
+    melding:
+      type: object
+      properties:
+        datePublished:
+          type: string
+          format: date
+          example: '2019-12-13'
+        description:
+          type: string
+          example: 'Uw aanvraag voor ontheffing milieuzone Brom/Snor is afgewezen'
+        id:
+          type: string
+          example: 'milieu-F3'
+        priority:
+          type: number
+          example: 0
+        title:
+          type: string
+          example: 'Uw aanvraag ontheffing milieuzone Brom/Snor'
+        link:
+          $ref: '#/components/schemas/link'
+    link:
+      type: object
+      properties:
+        title:
+          type: string
+          example: 'Meer informatie'
+        to:
+          type: string
+          example: 'https://ontheffingen-acc.amsterdam.nl/publiek/aanvraag/5A158FD9-B07D-4A4C-B780-8359A9A14906'
