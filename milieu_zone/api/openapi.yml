@@ -3,8 +3,6 @@ info:
   title: Milieu zone koppel api
   description: Milieu zone koppel api
   version: 1.0.0
-servers:
-  - url: 'https://mijn.amsterdam.nl'
 paths:
   /milieu/get:
     description: main endpoint to get data for data in Cleopatra
