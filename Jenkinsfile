@@ -12,7 +12,6 @@ String BRANCH = "${env.BRANCH_NAME}"
 String IMAGE_NAME = "mijnams/mijn-milieu-zone-api"
 String IMAGE_TAG = "${IMAGE_NAME}:${env.BUILD_NUMBER}"
 String CMDB_ID = "app_mijn-milieuzone"
-String LATEST_TAG = sh(returnStdout:  true, script: "git tag --sort=-creatordate | head -n 1").trim()
 
 node {
     stage("Checkout") {
