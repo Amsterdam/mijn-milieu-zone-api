@@ -63,9 +63,9 @@ class CleopatraConnection:
         return response.json()
 
     def _format_data(self, data_item):
+        cat = data_item["categorie"]
         return {
-            "id": "milieu-"
-            + data_item["categorie"],  # FIXME: these are not unique enough
+            "id": f"milieu-{cat}",
             "priority": data_item["prioriteit"],
             "datePublished": data_item["datum"],
             "title": data_item["titel"],
