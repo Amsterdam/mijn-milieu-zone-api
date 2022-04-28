@@ -1,20 +1,12 @@
-
-# flask and plugins
-flask
-Flask-Testing
-
-requests
-
-# encryption
-jwcrypto
-
-
-# testing tools
-flake8
+black
 coverage
-
-# error reporting
+cryptography
+flake8
+flask
+flask_httpauth
+jwcrypto
+openapi-core
+pycryptodome
+pyjwt
+requests
 sentry-sdk[flask]
-
-tma-saml>=0.4.1
-cryptography>=3.2.1
