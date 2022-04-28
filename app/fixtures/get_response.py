@@ -87,7 +87,7 @@ def get_all_expected():
     return {
         "content": {
             "isKnown": True,
-            "meldingen": [
+            "notifications": [
                 {
                     "datePublished": "2019-12-13",
                     "description": "Uw aanvraag voor ontheffing milieuzone Brom/Snor is afgewezen",

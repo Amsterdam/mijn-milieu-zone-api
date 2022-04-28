@@ -37,4 +37,4 @@ class CleopatraConnectionTest(TestCase):
             ),
         )
 
-        self.assertEqual(result, {"tips": [], "meldingen": [], "isKnown": False})
+        self.assertEqual(result, {"tips": [], "notifications": [], "isKnown": False})

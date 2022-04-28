@@ -77,7 +77,7 @@ class CleopatraConnection:
         }
 
     def transform(self, data):
-        res = {"tips": [], "meldingen": [], "isKnown": False}
+        res = {"tips": [], "notifications": [], "isKnown": False}
 
         for item in data:
             if item["categorie"] == "F2":
@@ -85,11 +85,11 @@ class CleopatraConnection:
 
             elif item["categorie"] == "F3":
                 melding = self._format_data(item)
-                res["meldingen"].append(melding)
+                res["notifications"].append(melding)
 
             elif item["categorie"] == "M1":
                 melding = self._format_data(item)
-                res["meldingen"].append(melding)
+                res["notifications"].append(melding)
 
         return res
 
